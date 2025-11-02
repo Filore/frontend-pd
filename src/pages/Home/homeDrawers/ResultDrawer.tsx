@@ -12,20 +12,33 @@ export default function ResultDrawer({isOpen, changeOpen, summ}:drawerResProps){
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 "/>
         <Drawer.Content className="
-          fixed bottom-0 inset-x-2 overflow-hidden
+          fixed bottom-0 inset-x-2 overflow-visible
           mt-24 rounded-2xl bg-[#3F20A8] outline-none
           flex flex-col
           ">
+
+            <div
+    aria-hidden
+    className="
+      absolute left-1/2 -translate-x-1/2
+      -top-3
+      w-25 h-1.5
+      rounded-full
+      bg-white/30
+    "
+  />
           
-          <div className="relative flex flex-1 pb-[clamp(8px,2.3vh,26px)] pt-[clamp(20px,4.2vh,40px)] px-[clamp(8px,5vw,26px)] rounded-t-[10px] justify-center items-center">
+          <div className="relative flex overflow-hidden flex-1 pb-[clamp(8px,2.3vh,26px)] pt-[clamp(20px,4.2vh,40px)] px-[clamp(8px,5vw,26px)] rounded-t-[10px] justify-center items-center">
 
             <div
       aria-hidden
       className={`
         absolute
-        w-[403px] h-[248px]
+        -top-[clamp(24px,8vh,120px)]
+        w-[clamp(260px,92vw,720px)]
+        h-[clamp(140px,48vw,380px)]
         left-1/2 -translate-x-1/2
-        -top-[80px]
+
         rounded-[50%]
         z-0
         blur-[50px]

@@ -7,9 +7,7 @@ export default function JackpotWid(){
     return (
     <div className="inline-flex  items-center justify-center px-[clamp(10px,3vw,14px)] py-[clamp(6px,2vh,8px)] max-w-full gap-[clamp(8px,2.4vw,12px)] bg-white/10 rounded-full">
       <div className="flex items-center justify-center w-[clamp(200px,63vw,280px)] h-[22px] gap-2.5">
-        <span
-          aria-hidden="true"
-          className=" shrink-0 w-[clamp(10px,3.2vw,13px)] h-[clamp(14px,4vh,18px)] bg-[#ACEB36]"/>
+        <img src="/icons/Vector-16.svg" alt="gifts" className="w-4 h-4" />
         <p
           className="
             font-['Inter'] font-medium

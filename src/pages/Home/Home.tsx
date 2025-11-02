@@ -56,7 +56,7 @@ export default function Home() {
         
       <div aria-hidden className="h-[clamp(90px,7vh,120px)] md:h-[clamp(100px,8vh,140px)]" />
 
-{/* фиксированный низ */}
+
 <div className="fixed inset-x-0 bottom-0 z-40 pb-[env(safe-area-inset-bottom)]">
           <div className="mx-auto w-full max-w-[560px] px-4 flex justify-center mb-[clamp(20px,4.69vw,60px)]">
             <NaviPanel />

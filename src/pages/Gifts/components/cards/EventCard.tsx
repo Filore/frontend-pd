@@ -22,7 +22,7 @@ export default function EventCard(props: Props) {
   const {badge, title, desc, deadline, progress = 0, onOpen} = props
 
   return (
-    <article className="w-full relative h-[clamp(160px,28vh,260px)]
+    <article className="w-full relative h-[clamp(180px,28vh,260px)]
                         border border-[rgba(255,255,255,0.06)]
                         rounded-[20px] p-5 bg-white/0 ">
       <p className="font-['Inter'] font-normal not-italic
@@ -49,7 +49,7 @@ export default function EventCard(props: Props) {
       </p>
       </div>
 
-      <Progress value={Math.max(0, Math.min(100, progress))} className="mt-7 h-2 rounded-full bg-white/10" />
+      <Progress value={Math.max(0, Math.min(100, progress))} className="mt-[2.7vh] h-2 rounded-full bg-white/10" />
 
 
     <div className="absolute top-4 right-4 flex">

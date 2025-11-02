@@ -13,20 +13,33 @@ export default function InviteDrawer({isOpen, changeOpen, inviteCode}: drawerFri
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 "/>
         <Drawer.Content className="
-          fixed bottom-0 inset-x-3 overflow-hidden
-          mt-24 rounded-2xl bg-black outline-none
+          fixed bottom-0 inset-x-3 overflow-visible
+          mt-24 rounded-2xl bg-[#030D16] outline-none
           flex flex-col
           ">
+
+            <div
+    aria-hidden
+    className="
+      absolute left-1/2 -translate-x-1/2
+      -top-3
+      w-25 h-1.5
+      rounded-full
+      bg-white/30
+      backdrop-blur
+    "
+  />
           
-          <div className="relative flex flex-1 pb-[clamp(8px,2.3vh,26px)] pt-[clamp(8px,4vh,40px)] px-[clamp(8px,5vw,26px)] rounded-t-[10px] justify-center items-center">
+          <div className="relative flex flex-1 pb-[clamp(8px,2.3vh,26px)] pt-[clamp(8px,4vh,40px)] px-[clamp(8px,5vw,26px)] rounded-t-[10px] overflow-hidden justify-center items-center">
 
                   <div
       aria-hidden
       className="
         absolute
-        w-[340px] h-[248px]
+        -top-[clamp(24px,8vh,120px)]
+        w-[clamp(240px,92vw,720px)]
+        h-[clamp(140px,48vw,380px)]
         left-1/2 -translate-x-1/2
-        -top-[80px]
         rounded-[50%]
         z-0
         blur-[50px]
@@ -46,7 +59,7 @@ export default function InviteDrawer({isOpen, changeOpen, inviteCode}: drawerFri
               <p className="flex text-white font-['Inter'] text-base font-normal justify-center mt-[clamp(8px,1.9vh,20px)] text-center">Invite a friend and compete with each other and in the overall global leaderboard.</p>
 
               <button className="w-[clamp(220px,85vw,393px)] h-[clamp(40px,7vh,100px)] bg-[linear-gradient(90deg,_#CFF7F0_0%,_#54FCF2_33%,_#ACEB36_66%,_#ACEB36_100%)] mt-[clamp(8px,3.4vh,40px)] rounded-xl">
-                copy
+                COPY
               </button>
 
             </div>

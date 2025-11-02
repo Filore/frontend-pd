@@ -45,10 +45,18 @@ export default function Profile() {
 
   const [activeTab, setActiveTab] = useState<Tabs>("achievements");
 
-  const items = useMemo(
-    () => (activeTab === "settings" ? [] : mockData[activeTab]),
-    [activeTab]
-  );
+  const items = useMemo(() => {
+  if (activeTab === "settings") return [];
+
+  const list = mockData[activeTab] ?? [];
+
+  if (activeTab === "friends") {
+    return [...list].sort((a, b) => a.place - b.place);
+  }
+
+  return list;
+}, [activeTab]);
+
 
   const Card = cardTypes[activeTab];
 
@@ -69,11 +77,14 @@ export default function Profile() {
         </h3>
 
         <div className="flex justify-center gap-3">
-          <button className="border border-white/10 rounded-3xl py-[clamp(10px,1.5vh,17px)] px-[clamp(10px,4vw,19px)] font-['Inter'] text-sm font-medium">
-           V 1371 T
+          <button className=" justify-center items-center border flex border-white/10 rounded-3xl py-[clamp(10px,1.5vh,17px)] px-[clamp(10px,4vw,19px)] font-['Inter'] text-sm font-medium">
+           <img src="/icons/Vector-17.svg" alt="coins" />
+           
+           <p className="ml-1"> 1371 ₮</p>
           </button> 
-          <button className="border border-white/10 rounded-3xl py-[clamp(10px,1.5vh,17px)] px-[clamp(10px,4vw,19px)] font-['Inter'] text-sm font-medium">
-           V 4144
+          <button className="border flex justify-center items-center border-white/10 rounded-3xl py-[clamp(10px,1.5vh,17px)] px-[clamp(10px,4vw,19px)] font-['Inter'] text-sm font-medium">
+           <img src="/icons/Vector-19.svg" alt="coins" />
+           <p className="ml-1">4114</p>
           </button>
         </div>
 
@@ -134,8 +145,8 @@ export default function Profile() {
               onClick={() => setInviteOpen(true)}
               className="pointer-events-auto
                          bg-[linear-gradient(90deg,_#CFF7F0_0%,_#54FCF2_33%,_#ACEB36_66%,_#ACEB36_100%)]
-                         text-black font-medium px-[clamp(12px,9.4vw,45px)] py-[clamp(12px,1.9vh,26px)] rounded-full shadow-lg
-                         -translate-y-5 font-['Inter'] text-xs"
+                         text-black font-medium px-[clamp(12px,9.4vw,45px)] py-[clamp(12px,1.9vh,26px)] rounded-full
+                         -translate-y-5 font-['Inter'] text-xs shadow-[0_0_15px_#ACEB3699]"
             >
               INVITE A FRIEND
             </button>

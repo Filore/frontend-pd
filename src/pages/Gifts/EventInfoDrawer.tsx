@@ -35,15 +35,15 @@ export default function EventInfoDrawer({isOpen, changeOpen, event}:drawerResPro
              <Drawer.Title className=" flex text-white font-['Inter'] text-sm font-normal justify-center">{badge}</Drawer.Title>
 
               
-              <p className="text-white mt-[clamp(20px,3.7vh,40px)] font-['Grtsk_Giga'] text-center font-bold text-4xl flex justify-center">
+              <p className="text-white mt-[clamp(6px,1.8vh,20px)] font-['Grtsk_Giga'] text-center font-bold text-[24px] flex justify-center">
                 {title}
               </p>
 
-              <p className="flex text-white/60 font-['Inter'] text-base font-normal justify-center mt-[clamp(8px,1.9vh,20px)] text-center mb-[clamp(8px,3.8vh,40px)]">{desc}</p>
+              <p className="flex text-white/60 font-['Inter'] text-base font-normal justify-center mt-[clamp(6px,1.9vh,20px)] text-center mb-[clamp(2px,1.1vh,20px)]">{desc}</p>
 
               <DateComp />
 
-              <p className="ml-1 font-['Inter'] text-[clamp(10px,2.6vw,12px)] leading-[1.4] text-white/40">
+              <p className="ml-1 font-['Inter'] my-[clamp(6px,1.8vh,20px)] text-[clamp(10px,2.6vw,12px)] leading-[1.4] text-white/40">
                   {deadline}
                   </p>
 
@@ -61,7 +61,7 @@ export default function EventInfoDrawer({isOpen, changeOpen, event}:drawerResPro
 
                 {
                   (tabActive === "gifts") ? (
-                    <ul>
+                    <ul className="w-full">
                       {reward.map((rew, i) => (
                         <li key={i}>
 

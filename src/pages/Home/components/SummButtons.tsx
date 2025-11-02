@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const bets = ["1,000 T", "2,000 T", "5,000 T", "All In!"]
+const bets = ["1,000 ₮", "2,000 ₮", "5,000 ₮", "All In!"]
 
 export default function SummButtons() {
     const [selected, setSelected] = useState(bets[0])
