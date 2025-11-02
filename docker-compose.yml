@@ -1,0 +1,8 @@
+services:
+  frontend:
+    build:
+      context: .
+    container_name: frontend-pump-dump
+    ports:
+      - "80:80"
+    restart: always
