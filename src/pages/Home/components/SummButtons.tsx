@@ -5,7 +5,7 @@ const bets = ["1,000 ₮", "2,000 ₮", "5,000 ₮", "All In!"]
 export default function SummButtons() {
     const [selected, setSelected] = useState(bets[0])
     return (
-        <div className="flex w-full justify-start gap-[clamp(8px,2.5vw,20px)] mt-[clamp(10px,2.3vh,30px)]">
+        <div className="flex w-full px-4 justify-start gap-[clamp(8px,2.5vw,20px)] mt-[clamp(10px,2.3vh,30px)]">
             {
                 bets.map((bet) => (
                 <button 

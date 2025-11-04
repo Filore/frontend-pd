@@ -82,6 +82,7 @@ export default function LiveChart() {
         height: "clamp(180px, 25svh, 260px)",
         borderRadius: "clamp(8px, 2.5vw, 12px)",
         overflow: "hidden",
+        paddingRight: "20px",
       }}
     />
   );

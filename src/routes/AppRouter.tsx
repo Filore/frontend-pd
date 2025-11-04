@@ -6,6 +6,9 @@ import Profile from "@/pages/Profile/Profile";
 import Auth from "@/pages/Authorization/Auth";
 import Roulette from "@/pages/Roulette/Roulette";
 import Result from "@/pages/Roulette/Result";
+import TutorChartScreen from "@/pages/Tutorials/TutorChartScreen";
+import TutorDrawScreen from "@/pages/Tutorials/TutorDrawScreen";
+import TutorTaskScreen from "@/pages/Tutorials/TutorTaskScreen";
 
 export default function AppRouter() {
   return (
@@ -18,6 +21,9 @@ export default function AppRouter() {
       <Route path="/auth" element={<Auth/>} />
       <Route path="/roulette" element={<Roulette/>} />
       <Route path="/result" element={<Result />} />
+      <Route path="/tutorchart" element={<TutorChartScreen />} />
+      <Route path="/tutordraw" element={<TutorDrawScreen />} />
+      <Route path="/tutortask" element={<TutorTaskScreen />} />
     </Routes>
   );
 }

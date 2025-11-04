@@ -22,7 +22,7 @@ export default function Home() {
 
   return (
 
-      <div className="relative h-dvh overflow-hidden px-4 sm:px-6">
+      <div className="relative h-dvh overflow-hidden ">
          <div className="mx-auto w-full max-w-[560px] h-full flex flex-col items-center">
         <h1 className=" not-italic font-bold  text-[clamp(26px,7.6vw,36px)] leading-[0.95] font-['Grtsk_Giga'] text-[#ACEB36] text-center pt-[clamp(20px,7.5vh,65px)]">
           Predict<br />the trend
@@ -37,7 +37,7 @@ export default function Home() {
         
         <ChartBtns />
 
-        <div className="w-full gap-[clamp(8px,2.5vw,12px)] mt-[clamp(6px,1.1vh,10px)] mb-[clamp(20px,5vh,50px)] flex items-start">
+        <div className="w-full gap-[clamp(8px,2.5vw,12px)] px-4 mt-[clamp(6px,1.1vh,10px)] mb-[clamp(20px,5vh,50px)] flex items-start">
         <div className="flex flex-col justify-start items-start gap-[clamp(2px,0.8vw,6px)]">
 
             <span className="text-[clamp(24px,8vw,32px)]  font-['Inter'] font-semibold leading-[clamp(28px,9.4vw,39px)] inline-block max-w-full tracking-[-0.02em] text-white">

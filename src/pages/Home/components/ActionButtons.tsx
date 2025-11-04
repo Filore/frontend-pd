@@ -15,7 +15,7 @@ export default function ActionButtons({
         gap-[clamp(10px,3vw,16px)]
         mt-[clamp(7px,2.8vh,36px)]
         mb-[clamp(6px,2.4vh,32px)]
-        w-full max-w-[min(90vw,560px)]
+        w-full max-w-[min(90vw,530px)]
       "
     >
       <ButtonBuy
@@ -28,11 +28,14 @@ export default function ActionButtons({
           font-normal rounded-[clamp(10px,4vw,25px)]
           shadow-[0_0_15px_#C6FF00]
           transition active:scale-95
-          font-['Inter']
+          font-['Inter'] flex
+          items-center
+          justify-center
         "
         onClick={onPump}
       >
-        PUMP
+         
+        <p>PUMP</p>
       </ButtonBuy>
 
       <ButtonBuy
@@ -46,10 +49,13 @@ export default function ActionButtons({
           shadow-[0_0_15px_#FF0037]
           transition active:scale-95
           font-['Inter']
+          items-center
+          justify-center
+          flex 
         "
         onClick={onDump}
       >
-        DUMP
+        <p className="">DUMP</p>
       </ButtonBuy>
     </div>
   );

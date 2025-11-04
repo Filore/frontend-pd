@@ -71,40 +71,8 @@ const items: WheelItem[] = [
 </defs>
 </svg>
 ` },
-  { id: "5", label: "Nope", svgString: `<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_404_31507)">
-<path d="M13 26C20.1797 26 26 20.1797 26 13C26 5.8203 20.1797 0 13 0C5.8203 0 0 5.8203 0 13C0 20.1797 5.8203 26 13 26Z" fill="#627EEA"/>
-<path d="M13.4045 3.25V10.4569L19.4959 13.1787L13.4045 3.25Z" fill="white" fill-opacity="0.602"/>
-<path d="M13.4046 3.25L7.3125 13.1787L13.4046 10.4569V3.25Z" fill="white"/>
-<path d="M13.4045 17.849V22.7459L19.4999 14.313L13.4045 17.849Z" fill="white" fill-opacity="0.602"/>
-<path d="M13.4046 22.7459V17.8482L7.3125 14.313L13.4046 22.7459Z" fill="white"/>
-<path d="M13.4045 16.7156L19.4959 13.1787L13.4045 10.4585V16.7156Z" fill="white" fill-opacity="0.2"/>
-<path d="M7.3125 13.1787L13.4046 16.7156V10.4585L7.3125 13.1787Z" fill="white" fill-opacity="0.602"/>
-</g>
-<defs>
-<clipPath id="clip0_404_31507">
-<rect width="26" height="26" fill="white"/>
-</clipPath>
-</defs>
-</svg>
-` },
-  { id: "6", label: "Nope", svgString: `<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_404_31507)">
-<path d="M13 26C20.1797 26 26 20.1797 26 13C26 5.8203 20.1797 0 13 0C5.8203 0 0 5.8203 0 13C0 20.1797 5.8203 26 13 26Z" fill="#627EEA"/>
-<path d="M13.4045 3.25V10.4569L19.4959 13.1787L13.4045 3.25Z" fill="white" fill-opacity="0.602"/>
-<path d="M13.4046 3.25L7.3125 13.1787L13.4046 10.4569V3.25Z" fill="white"/>
-<path d="M13.4045 17.849V22.7459L19.4999 14.313L13.4045 17.849Z" fill="white" fill-opacity="0.602"/>
-<path d="M13.4046 22.7459V17.8482L7.3125 14.313L13.4046 22.7459Z" fill="white"/>
-<path d="M13.4045 16.7156L19.4959 13.1787L13.4045 10.4585V16.7156Z" fill="white" fill-opacity="0.2"/>
-<path d="M7.3125 13.1787L13.4046 16.7156V10.4585L7.3125 13.1787Z" fill="white" fill-opacity="0.602"/>
-</g>
-<defs>
-<clipPath id="clip0_404_31507">
-<rect width="26" height="26" fill="white"/>
-</clipPath>
-</defs>
-</svg>
-` },
+  { id: "5", label: "Nope", svgString: `` },
+  { id: "6", label: "Nope", svgString: `` },
 ]
 
 const CENTER_DEG_BY_INDEX = [180, 240, 0, 60, 120, 300]
@@ -174,20 +142,23 @@ const navigate = useNavigate();
   }
 
 return (
-    <div className="flex bg-[#3F20A8] flex-col items-center h-[100svh] overflow-hidden ">
+    <div className="flex bg-[#3F20A8] flex-col justify-between px-[clamp(5px,2.5vw,40px)] py-[clamp(5px,2.5vw,40px)] items-center h-[100svh] overflow-hidden ">
 
     <div className="w-full justify-end flex">
-        <button className="px-[clamp(1px,2.3vw,13px)] py-[clamp(1px,1.1vh,13px)] rounded-3xl bg-white/10 font-['Inter'] font-normal text-base mt-2 mr-2">
-            11 V
+        <button className="px-[clamp(1px,2.3vw,13px)] items-center py-[clamp(1px,1.1vh,13px)] rounded-3xl bg-white/10 font-['Inter'] flex font-normal text-base">
+            <p className="mr-1">11</p>
+            <img src="/icons/Vector-20.svg" alt="spiral" />
         </button>
     </div>
 
 
     
-    <button className=" mt-[clamp(10px,11.1vh,120px)] mb-[clamp(20px,3.6vh,40px)] px-[clamp(5px,3.5vw,20px)] py-[clamp(1px,1.1vh,13px)] rounded-3xl bg-white/10 font-['Inter'] font-normal text-base"
+    <button className=" mt-[clamp(10px,11.1vh,120px)] items-center flex mb-[clamp(20px,3.6vh,40px)] px-[clamp(5px,3.5vw,20px)] py-[clamp(1px,1.1vh,13px)] rounded-3xl bg-white/10 font-['Inter'] font-normal text-base"
     onClick={() => spin()}
           disabled={spinning}>
-        V Free spin for luck
+
+        <img src="/icons/Vector-20.svg" alt="spiral" />
+        <p className="ml-1">Free spin for luck</p>
     </button>
 
 
@@ -218,12 +189,12 @@ return (
       h-[calc(333px*min(100vw/393,100vh/852))]"/>
     </div>
 
-    <p className="font-['Inter'] mb-[clamp(5px,13.6vw,70px)] text-center px-[clamp(10px,7.6vw,40px)] mt-[clamp(5px,2.6vh,20px)] font-normal text-sm text-white/40"
+    <p className="font-['Inter'] mb-[clamp(5px,13.6svh,190px)] text-center px-[clamp(10px,7.6vw,40px)] mt-[clamp(5px,2.6svh,20px)] font-normal text-sm text-white/40"
     >Get free points for your initial deposit and start predicting with an advantage.</p>
 
-    <div className="flex w-full  justify-end">
+    <div className="flex w-full justify-end">
     <Link to="/home">
-    <button className="px-[clamp(15px,5vw,30px)] py-[clamp(1px,2.8vh,30px)] mb-[clamp(5px,2.5svh,40px)] border-2 border-white/20 rounded-2xl text-xs text-white font-['Inter'] mr-2 font-normal">
+    <button className="px-[clamp(15px,5vw,30px)] py-[clamp(1px,2.8vh,30px)] border-2 border-white/20 rounded-2xl text-xs text-white font-['Inter'] font-normal">
         LATER
     </button>
     </Link>

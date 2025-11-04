@@ -5,7 +5,7 @@ export default function ChartBtns() {
         w-full flex items-center justify-between
         gap-[clamp(8px,2.8vw,16px)]
         mt-[clamp(12px,4vh,38px)]
-        flex-wrap
+        flex-wrap px-4
       "
     >
       <button

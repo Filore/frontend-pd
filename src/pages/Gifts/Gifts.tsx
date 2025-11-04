@@ -21,8 +21,8 @@ const mockData: Record<Tab, Array<EventItem | TaskItem | AchievementItem>> = {
       desc: "Reward for 1st place, to the one who stays in the top for 7 days",
       deadline: "6 days 12 hours",
       progress: 100,
-      reward: [{place: "1-3",value: "0.0006 ETH"}, {place:"4-5", value:"0.0003 ETH"}],
-      info: "Your intuition and team spirit are what matter most. Join a squad or create your own, make predictions on the direction of cryptocurrency prices and earn points for accurate predictions. The higher your team's score, the closer you are to the top of the rankings and prizes. This is a game where trading becomes a competition and the market becomes an arena for squad battles."
+      reward: [{place: "1-3",value: "0.0006 ETH"}, {place:"4-5", value:"0.0003 ETH"},  {place:"6-7", value:"0.0003 ETH"},  {place:"8", value:"0.0003 ETH"},  {place:"9-10", value:"0.0001 ETH"}],
+      info: "Your intuition and team spirit are what matter most. Join a squad or create your own, make predictions on the direction of cryptocurrency prices and earn points for accurate predictions. The higher your team's score, the closer you are to the top of the rankings and prizes. This is a game where trading becomes a competition and the market becomes an arena for squad battles. Rules: Participation is free of charge. Each player may only join one squad. Predictions are made on selected cryptocurrency pairs (up/down). Points are awarded for accurate predictions; incorrect predictions do not count. The number of predictions per day is limited by the contest rules. The squad that scores the most points over the entire period wins. Prizes are distributed among the participants of the top teams."
     } satisfies EventItem,
     {
       id: "e2",
@@ -86,7 +86,7 @@ const mockData: Record<Tab, Array<EventItem | TaskItem | AchievementItem>> = {
       claimed: false,
       progress: 2,
       steps: 3,
-      stepDesc: "papern 3 times train"
+      stepDesc: "Guess the movement 3 times in a row"
     } satisfies AchievementItem,
     {
       id: "a2",
@@ -97,7 +97,7 @@ const mockData: Record<Tab, Array<EventItem | TaskItem | AchievementItem>> = {
       claimed: true,
       progress: 3,
       steps: 3,
-      stepDesc: "papern 3/3"
+      stepDesc: "Guess the movement 3 times in a row"
     } satisfies AchievementItem,
   ],
 };
@@ -161,7 +161,7 @@ export default function Gifts() {
         [-ms-overflow-style:none]              
         [&::-webkit-scrollbar]:w-0 [&::-webkit-scrollbar]:h-0">
  
-            <ul className="space-y-3">
+            <ul className="space-y-3 pb-30">
               {items.map((item: any) => (
                 <li key={item.id}>
                   {active === "achievements" ? (
