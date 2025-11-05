@@ -20,6 +20,15 @@ export default function Home() {
 
   const [achDrawOpen, setachDrawOpen] = useState(false)
 
+  const [entryPrice, setEntryPrice] = useState<number | null>(null);
+  const [currentPrice, setCurrentPrice] = useState<number | null>(null);
+  const [mode, setMode] = useState<"pump" | "dump" | null>(null);
+
+  const handleClick = (newMode: "pump" | "dump") => {
+    setMode(newMode);
+    setEntryPrice(currentPrice ?? null);
+  };
+
   return (
 
       <div className="relative h-dvh overflow-hidden ">
@@ -41,15 +50,15 @@ export default function Home() {
         <div className="flex flex-col justify-start items-start gap-[clamp(2px,0.8vw,6px)]">
 
             <span className="text-[clamp(24px,8vw,32px)]  font-['Inter'] font-semibold leading-[clamp(28px,9.4vw,39px)] inline-block max-w-full tracking-[-0.02em] text-white">
-              4,444
+              {Math.round(currentPrice ?? 0)}
             </span>
           </div>
         </div>
 
-        <LiveChart />
+        <LiveChart  entryPrice={entryPrice ?? undefined} onPriceChange={setCurrentPrice} mode={mode ?? "pump"}/>
         <SummButtons />
         
-          <ActionButtons onPrimaryClick={[() => setresDrawOpen(true), () => setachDrawOpen(true)]}/>
+          <ActionButtons onPrimaryClick={[() => handleClick("pump"), () => handleClick("dump")]}/>
 
 
 

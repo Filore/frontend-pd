@@ -1,9 +1,17 @@
-import { useEffect, useRef } from "react";
-import { createChart, LineSeries, type UTCTimestamp, type ISeriesApi } from "lightweight-charts";
+import { useEffect, useRef, useState } from "react";
+import { createChart, AreaSeries, type UTCTimestamp, type ISeriesApi } from "lightweight-charts";
 
-export default function LiveChart() {
+type Props = {
+  entryPrice?: number;                   // цена входа (может быть undefined)
+  onPriceChange?: (price: number) => void; // колбэк для передачи текущей цены
+  mode?: "pump" | "dump";
+};
+
+export default function LiveChart({ entryPrice, onPriceChange, mode }: Props) {
   const chartContainerRef = useRef<HTMLDivElement>(null);
-  const seriesRef = useRef<ISeriesApi<"Line"> | null>(null);
+  const seriesRef = useRef<ISeriesApi<"Area"> | null>(null);
+  const [currentPrice, setCurrentPrice] = useState<number | null>(null);
+  const [entryLine, setEntryLine] = useState<ReturnType<ISeriesApi<"Area">["createPriceLine"]> | null>(null);
 
   useEffect(() => {
     const container = chartContainerRef.current!;
@@ -31,20 +39,22 @@ export default function LiveChart() {
       crosshair: { mode: 0 },
     });
 
-    const lineSeries = chart.addSeries(LineSeries, {
-      color: "#C6FF00",
+     const areaSeries = chart.addSeries(AreaSeries, {
+      lineColor: "#C6FF00",
+      topColor: "rgba(198,255,0,0.4)", // верхний цвет градиента
+      bottomColor: "rgba(198,255,0,0.0)", // низ (прозрачный)
       lineWidth: 2,
       lastValueVisible: true,
       priceLineVisible: false,
     });
-    seriesRef.current = lineSeries;
+    seriesRef.current = areaSeries;
 
     const now = Math.floor(Date.now() / 1000) as UTCTimestamp;
     let data = Array.from({ length: 30 }, (_, i) => ({
       time: (now - (30 - i)) as UTCTimestamp,
       value: 3880 + Math.random() * 10,
     }));
-    lineSeries.setData(data);
+    areaSeries.setData(data);
     chart.timeScale().scrollToRealTime();
 
     const interval = setInterval(() => {
@@ -55,7 +65,10 @@ export default function LiveChart() {
       };
       data.push(newPoint);
       if (data.length > 200) data.shift();
-      lineSeries.update(newPoint);
+
+      areaSeries.update(newPoint)
+      setCurrentPrice(newPoint.value)
+      onPriceChange?.(newPoint.value)
     }, 1000);
 
     // обновляем при изменении размеров
@@ -72,7 +85,55 @@ export default function LiveChart() {
       window.removeEventListener("resize", handleResize);
       chart.remove();
     };
-  }, []);
+  }, [onPriceChange]);
+
+useEffect(() => {
+  if (!seriesRef.current) return;
+
+  if (!entryPrice) {
+    seriesRef.current.applyOptions({
+      lineColor: "#A1F200",
+      topColor: "rgba(0,0,0,0)",
+      bottomColor: "rgba(0,0,0,0)",
+    });
+    return;
+  }
+
+  // если entryPrice задан — раскрашиваем по направлению
+  if (onPriceChange) {
+    const colorUp = "#A1F200";
+    const colorDown = "#F20000";
+    const isProfit =
+        mode === "pump"
+          ? currentPrice >= entryPrice
+          : currentPrice <= entryPrice;
+
+      const color = isProfit ? colorUp : colorDown;
+
+
+    seriesRef.current.applyOptions({
+      lineColor: color,
+      topColor: color + "93",    // полупрозрачный градиент
+      bottomColor: color + "00", // прозрачный низ
+    });
+
+    if (seriesRef.current) {
+        if (entryLine) {
+          seriesRef.current.removePriceLine(entryLine);
+        }
+
+        const newLine = seriesRef.current.createPriceLine({
+          price: entryPrice,
+          color: "rgba(255,255,255,0.5)",
+          lineWidth: 1,
+          lineStyle: 2, // 0 - solid, 1 - dashed, 2 - dotted
+          axisLabelVisible: true,
+        });
+
+        setEntryLine(newLine);
+      }
+  }
+}, [currentPrice, entryPrice, mode]);
 
   return (
     <div
@@ -85,5 +146,5 @@ export default function LiveChart() {
         paddingRight: "20px",
       }}
     />
-  );
+  )
 }
